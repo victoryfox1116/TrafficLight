@@ -10,7 +10,7 @@ const TrafficLight = (props:TrafficLightProps) => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setActiveColor((activeColor + 1) % 3);
-        }, lightDurations[props.initTurnOnLightNumber ? (activeColor + 2) % 3 : activeColor]);
+        }, lightDurations[props.initTurnOnLightNumber ? (activeColor + 1) % 3 : activeColor]);
         return () => {
           clearTimeout(timer);
         };

@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <TrafficLight initTurnOnLightNumber = {0} />
-      <TrafficLight initTurnOnLightNumber = {1} />
+      <TrafficLight initTurnOnLightNumber = {2} />
     </div>
   );
 }

@@ -1,12 +1,25 @@
-import React from 'react';
-import TrafficLight from './Components/TrafficLight';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import TrafficLight from "./Components/TrafficLight";
+import "./App.css";
+
+const lightDurations = [1000, 2000, 4000];
 
 function App() {
+  const [activeColor, setActiveColor] = useState<number>(0);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setActiveColor((activeColor + 1) % 3);
+    }, lightDurations[activeColor]);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [activeColor]);
+
   return (
     <div className="App">
-      <TrafficLight initTurnOnLightNumber = {0} />
-      <TrafficLight initTurnOnLightNumber = {2} />
+      <TrafficLight activeColor={activeColor} />
+      <TrafficLight activeColor={(activeColor + 2) % 3} />
     </div>
   );
 }

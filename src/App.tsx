@@ -5,11 +5,11 @@ import "./App.css";
 const lightDurations = [1000, 2000, 4000];
 
 function App() {
-  const [activeColor, setActiveColor] = useState<number>(0);
+  const [activeColor, setActiveColor] = useState(0);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setActiveColor((activeColor + 1) % 3);
+      setActiveColor((prevColor) => (prevColor + 1) % 3);
     }, lightDurations[activeColor]);
     return () => {
       clearTimeout(timer);

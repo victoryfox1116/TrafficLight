@@ -1,5 +1,5 @@
 import "./index.css";
-const Light = (props: LightProps) => {
+const Light = (props: { color: string; isActive: boolean }) => {
   return (
     <div
       className="light"
@@ -10,10 +10,5 @@ const Light = (props: LightProps) => {
     ></div>
   );
 };
-
-export interface LightProps {
-  color: string;
-  isActive: boolean;
-}
 
 export default Light;

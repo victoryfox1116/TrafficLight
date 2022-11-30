@@ -1,32 +1,27 @@
-import React, {useEffect, useState} from "react";
 import Light from "../Light";
-import "./TrafficLight.css";
+import "./index.css";
+import { LightColor } from "../../models/LightColor";
+import { LightNumber } from "../../models/LightNumber";
 
-const lightDurations = [1000, 2000, 4000];
+const TrafficLight = (props: { activeColor: number }) => {
+  const { activeColor } = props;
 
-const TrafficLight = (props:TrafficLightProps) => {
-    const [activeColor, setActiveColor] = useState<number>(props.initTurnOnLightNumber);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setActiveColor((activeColor + 1) % 3);
-        }, lightDurations[props.initTurnOnLightNumber ? (activeColor + 1) % 3 : activeColor]);
-        return () => {
-          clearTimeout(timer);
-        };
-    });
-    return(
-        <div className="traffic-light__box">
-            <Light color="red" isActive={activeColor === 0} />
-            <Light color="yellow" isActive={activeColor === 1} />
-            <Light color="green" isActive={activeColor === 2} />
-        </div>
-    )
-}
-
-
-export declare interface TrafficLightProps {
-    initTurnOnLightNumber : number;
-}
+  return (
+    <div className="traffic-light__box">
+      <Light
+        color={LightColor.Red}
+        isActive={activeColor === LightNumber.Red}
+      />
+      <Light
+        color={LightColor.Yellow}
+        isActive={activeColor === LightNumber.Yellow}
+      />
+      <Light
+        color={LightColor.Green}
+        isActive={activeColor === LightNumber.Green}
+      />
+    </div>
+  );
+};
 
 export default TrafficLight;
